@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durjoy Barua — Singer · Musician · Composer</title>
+<meta name="description" content="Durjoy Barua — singer, musician and composer. Original beats, compositions and collaborations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/logo.jpg">
+<style>
+  :root{
+    --bg: #0e1a13;
+    --bg-alt: #142218;
+    --panel: #17261c;
+    --red: #c1272d;
+    --gold: #dba43c;
+    --teal: #2f6b52;
+    --cream: #f3e9d2;
+    --muted: #a89d84;
+    --hairline: rgba(243,233,210,0.14);
+    --max: 1180px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--bg);
+    color: var(--cream);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  ::selection{ background: var(--red); color: var(--cream); }
+  h1,h2,h3,.display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  a{ color: inherit; text-decoration: none; }
+  img{ max-width: 100%; display:block; }
+  .wrap{ max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- ornamental divider (signature motif) ---------- */
+  .motif{
+    width: 100%;
+    height: 14px;
+    background-repeat: repeat-x;
+    background-size: 42px 14px;
+    background-position: center;
+    opacity: 0.85;
+  }
+  .motif svg{ display:block; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: linear-gradient(to bottom, rgba(14,26,19,0.92), rgba(14,26,19,0));
+    padding: 20px 0 40px;
+    transition: background .3s ease;
+  }
+  header.nav .wrap{
+    display:flex; justify-content: space-between; align-items:center;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+  }
+  .brand em{ font-style: normal; color: var(--gold); }
+  nav.links{ display:flex; gap: 28px; }
+  nav.links a{
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color .25s ease;
+  }
+  nav.links a:hover{ color: var(--cream); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--cream); font-size:1.5rem; cursor:pointer; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 100vh;
+    display:flex;
+    align-items:center;
+    padding: 140px 0 80px;
+    background:
+      radial-gradient(ellipse 900px 600px at 75% 20%, rgba(47,107,82,0.35), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 10% 90%, rgba(193,39,45,0.18), transparent 60%),
+      var(--bg);
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 22px;
+    display:flex;
+    align-items:center;
+    gap: 12px;
+  }
+  .hero-copy .eyebrow::before{
+    content:'';
+    width: 34px; height: 1px;
+    background: var(--gold);
+    display:inline-block;
+  }
+  .hero-copy h1{
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
+    line-height: 0.98;
+    color: var(--cream);
+  }
+  .hero-copy h1 .last{ color: transparent; -webkit-text-stroke: 1.5px var(--cream); display:block; }
+  .hero-copy p.tag{
+    margin-top: 26px;
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 40ch;
+  }
+  .hero-copy p.tag strong{ color: var(--cream); font-weight: 500; }
+  .hero-cta{
+    margin-top: 40px;
+    display:flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap: 10px;
+    padding: 14px 26px;
+    border-radius: 2px;
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .btn.primary{
+    background: var(--red);
+    color: var(--cream);
+  }
+  .btn.primary:hover{ background:#a41f24; transform: translateY(-2px); }
+  .btn.ghost{
+    border: 1px solid var(--hairline);
+    color: var(--cream);
+  }
+  .btn.ghost:hover{ border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-art{
+    position: relative;
+  }
+  .hero-art .frame{
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.6);
+    transform: rotate(1.2deg);
+  }
+  .hero-art img{ width:100%; height:auto; }
+  .hero-art .frame::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 0 1px rgba(243,233,210,0.08);
+  }
+  .hero-art .caption{
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 8px;
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom: 36px;
+    left: 28px;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .scroll-cue .line{
+    width: 1px; height: 34px;
+    background: var(--muted);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-cue .line::after{
+    content:'';
+    position:absolute; top:-100%; left:0; width:100%; height:100%;
+    background: var(--gold);
+    animation: pour 2.2s ease-in-out infinite;
+  }
+  @keyframes pour{
+    0%{ top:-100%; }
+    50%{ top:0; }
+    100%{ top:100%; }
+  }
+
+  /* ---------- section shared ---------- */
+  section{ padding: 120px 0; position: relative; }
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 60px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .section-head .eyebrow{
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--cream);
+  }
+  .section-head p{ color: var(--muted); max-width: 44ch; }
+
+  .reveal{
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{ opacity:1; transform: translateY(0); }
+
+  /* ---------- about ---------- */
+  .about{ background: var(--bg-alt); }
+  .about .grid{
+    display:grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .about .quote{
+    font-family:'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    line-height: 1.35;
+    color: var(--cream);
+    border-left: 2px solid var(--red);
+    padding-left: 26px;
+  }
+  .about .body p{ color: var(--muted); margin-bottom: 18px; font-size: 1.02rem; }
+  .about .body p strong{ color: var(--cream); font-weight: 500; }
+  .stats{
+    display:flex;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .stats .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--gold);
+  }
+  .stats .stat span{
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- videos ---------- */
+  .videos .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .video-card{
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--panel);
+    display:block;
+  }
+  .video-card img{
+    width:100%; height:100%; object-fit: cover;
+    transition: transform .5s ease, filter .5s ease;
+    filter: saturate(0.85) brightness(0.8);
+  }
+  .video-card:hover img{ transform: scale(1.06); filter: saturate(1) brightness(0.6); }
+  .video-card .overlay{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(14,26,19,0.9), transparent 55%);
+  }
+  .video-card .play{
+    position:absolute; top:50%; left:50%; transform: translate(-50%,-50%) scale(1);
+    width: 56px; height:56px;
+    border-radius: 50%;
+    background: rgba(243,233,210,0.14);
+    backdrop-filter: blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    transition: transform .3s ease, background .3s ease;
+    border: 1px solid rgba(243,233,210,0.3);
+  }
+  .video-card:hover .play{ transform: translate(-50%,-50%) scale(1.1); background: var(--red); border-color: var(--red); }
+  .video-card .play svg{ width:18px; height:18px; fill: var(--cream); margin-left: 3px; }
+  .video-card .vtitle{
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--cream);
+  }
+  .video-card .vtag{
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  /* ---------- work with me ---------- */
+  .work{ background: var(--bg-alt); }
+  .work .grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--hairline);
+    border: 1px solid var(--hairline);
+  }
+  .work-card{
+    background: var(--bg-alt);
+    padding: 48px 44px;
+  }
+  .work-card .num{
+    font-family:'Fraunces', serif;
+    font-size: 0.85rem;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .work-card h3{
+    font-size: 1.6rem;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+  .work-card p{ color: var(--muted); margin-bottom: 26px; }
+  .work-card a.link{
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap: 8px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color .25s ease, gap .25s ease;
+  }
+  .work-card a.link:hover{ border-color: var(--gold); gap: 12px; }
+
+  /* ---------- connect ---------- */
+  .connect .wrap{ text-align:center; }
+  .connect .section-head{ justify-content:center; text-align:center; flex-direction:column; align-items:center; }
+  .connect .section-head p{ max-width: 46ch; }
+  .contact-cta{
+    display:flex; justify-content:center; margin-bottom: 60px;
+  }
+  .social-grid{
+    display:grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 18px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .social-card{
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    padding: 28px 16px;
+    display:flex; flex-direction:column; align-items:center; gap: 12px;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .social-card:hover{ transform: translateY(-4px); border-color: var(--gold); background: #1c2c20; }
+  .social-card svg{ width:24px; height:24px; fill: var(--cream); }
+  .social-card span{ font-size: 0.76rem; letter-spacing: 0.05em; color: var(--muted); }
+  .social-card:hover span{ color: var(--cream); }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding: 48px 0 36px;
+    text-align: center;
+  }
+  footer p{ font-size: 0.8rem; color: var(--muted); letter-spacing: 0.02em; }
+  footer .fname{ font-family:'Fraunces', serif; color: var(--cream); font-size: 0.95rem; margin-bottom: 6px; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px){
+    nav.links{ display:none; }
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero-art{ order:-1; }
+    .about .grid{ grid-template-columns: 1fr; }
+    .videos .grid{ grid-template-columns: 1fr; }
+    .work .grid{ grid-template-columns: 1fr; }
+    .social-grid{ grid-template-columns: repeat(3, 1fr); }
+    section{ padding: 80px 0; }
+    .hero{ padding-top: 120px; }
+  }
+  @media (max-width: 480px){
+    .social-grid{ grid-template-columns: repeat(2, 1fr); }
+    .wrap{ padding: 0 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="motif" id="motif-top"></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">Durjoy <em>Barua</em></a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#videos">Music</a>
+      <a href="#work">Work With Me</a>
+      <a href="#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Singer &middot; Musician &middot; Composer</div>
+      <h1>Durjoy<span class="last">Barua</span></h1>
+      <p class="tag">Songs built from <strong>folk roots</strong> and forest air — original compositions, custom beats, and collaborations, made in Bangladesh for anyone, anywhere.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn primary">Work With Me</a>
+        <a href="#connect" class="btn ghost">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="frame">
+        <img src="assets/logo.jpg" alt="Durjoy Barua playing a dotara in the forest, framed in traditional Bengali folk art border" width="1024" height="1024">
+      </div>
+      <div class="caption">Durjoy Barua — in session</div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span class="line"></span> Scroll</div>
+</section>
+
+<div class="motif"></div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>Rooted in melody,<br>built for collaboration.</h2>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="reveal">
+        <p class="quote">"Every song starts somewhere real — a forest, a memory, a feeling that hasn't found words yet."</p>
+      </div>
+      <div class="body reveal">
+        <p>Durjoy Barua is a singer, musician, and composer writing music that carries the texture of home — folk instrumentation, original melody, and a voice shaped by the land it comes from.</p>
+        <p>Whether it's an <strong>original beat for your next release</strong> or a <strong>full composition for your project</strong>, Durjoy works closely with artists, filmmakers, and creators to build something that fits the story being told.</p>
+        <div class="stats">
+          <div class="stat"><b>Beats</b><span>Made to Order</span></div>
+          <div class="stat"><b>Scores</b><span>Composed &amp; Produced</span></div>
+          <div class="stat"><b>Global</b><span>Remote Collaboration</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="motif"></div>
+
+<section class="videos" id="videos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Listen &amp; Watch</div>
+        <h2>Featured Work</h2>
+      </div>
+      <p>A few performances and releases — tap any thumbnail to watch on YouTube.</p>
+    </div>
+    <div class="grid">
+      <a class="video-card reveal" href="https://www.youtube.com/watch?v=z11I2GF_6VI" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/z11I2GF_6VI/hqdefault.jpg" alt="Featured performance video 1" loading="lazy">
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="overlay">
+          <div class="vtag">Watch on YouTube</div>
+          <div class="vtitle">Performance &amp; Original Music</div>
+        </div>
+      </a>
+      <a class="video-card reveal" href="https://www.youtube.com/shorts/zpLSC5PMgBA" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/zpLSC5PMgBA/hqdefault.jpg" alt="Featured performance video 2" loading="lazy">
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="overlay">
+          <div class="vtag">Watch on YouTube</div>
+          <div class="vtitle">Short Session</div>
+        </div>
+      </a>
+      <a class="video-card reveal" href="https://youtu.be/CGMfDt0qwiE" target="_blank" rel="noopener">
+        <img src="https://img.youtube.com/vi/CGMfDt0qwiE/hqdefault.jpg" alt="Featured performance video 3" loading="lazy">
+        <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="overlay">
+          <div class="vtag">Watch on YouTube</div>
+          <div class="vtitle">Live &amp; Unplugged</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Work With Me</div>
+        <h2>Two ways to collaborate</h2>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="grid">
+      <div class="work-card reveal">
+        <div class="num">01 — Beats</div>
+        <h3>Buy an Original Beat</h3>
+        <p>Custom-made beats for your next track — folk-inspired or contemporary, tailored to the mood and genre you're going for.</p>
+        <a class="link" href="#connect">Get a Quote →</a>
+      </div>
+      <div class="work-card reveal">
+        <div class="num">02 — Projects</div>
+        <h3>Hire for Your Project</h3>
+        <p>Composition, vocals, and production for films, releases, and creative projects — remote collaboration welcome, anywhere in the world.</p>
+        <a class="link" href="#connect">Start a Conversation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="motif"></div>
+
+<section class="connect" id="connect">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Connect</div>
+      <h2>Let's make something.</h2>
+      <p>Reach out directly on WhatsApp for the fastest response, or find Durjoy on any of the platforms below.</p>
+    </div>
+    <div class="contact-cta reveal">
+      <a class="btn primary" href="https://wa.me/8801859648452" target="_blank" rel="noopener">
+        Message on WhatsApp
+      </a>
+    </div>
+    <div class="social-grid reveal">
+      <a class="social-card" href="https://www.facebook.com/share/1BYfhzQHUj/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        <span>Facebook</span>
+      </a>
+      <a class="social-card" href="https://www.instagram.com/durj0y_/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.1 1.1 0 1.8.2 2.5.5.7.3 1.2.6 1.7 1.1.5.5.9 1 1.1 1.7.3.7.5 1.4.5 2.5.1 1 .1 1.4.1 4.1s0 3.1-.1 4.1c0 1.1-.2 1.8-.5 2.5-.3.7-.6 1.2-1.1 1.7-.5.5-1 .9-1.7 1.1-.7.3-1.4.5-2.5.5-1 .1-1.4.1-4.1.1s-3.1 0-4.1-.1c-1.1 0-1.8-.2-2.5-.5-.7-.3-1.2-.6-1.7-1.1-.5-.5-.9-1-1.1-1.7-.3-.7-.5-1.4-.5-2.5C2 15.1 2 14.7 2 12s0-3.1.1-4.1c0-1.1.2-1.8.5-2.5.3-.7.6-1.2 1.1-1.7.5-.5 1-.9 1.7-1.1.7-.3 1.4-.5 2.5-.5C8.9 2 9.3 2 12 2Zm0 1.8c-2.7 0-3 0-4 .1-.9 0-1.4.2-1.8.3-.4.2-.7.4-1 .7-.3.3-.5.6-.7 1-.1.4-.3.9-.3 1.8-.1 1-.1 1.3-.1 4s0 3 .1 4c0 .9.2 1.4.3 1.8.2.4.4.7.7 1 .3.3.6.5 1 .7.4.1.9.3 1.8.3 1 .1 1.3.1 4 .1s3 0 4-.1c.9 0 1.4-.2 1.8-.3.4-.2.7-.4 1-.7.3-.3.5-.6.7-1 .1-.4.3-.9.3-1.8.1-1 .1-1.3.1-4s0-3-.1-4c0-.9-.2-1.4-.3-1.8-.2-.4-.4-.7-.7-1-.3-.3-.6-.5-1-.7-.4-.1-.9-.3-1.8-.3-1-.1-1.3-.1-4-.1Zm0 3.5a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4Zm0 1.8a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8Zm5-2a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"/></svg>
+        <span>Instagram</span>
+      </a>
+      <a class="social-card" href="https://www.youtube.com/@DipraDurjoyBrothers" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M23 12s0-3.6-.5-5.3c-.3-1-1-1.8-2-2C18.8 4.2 12 4.2 12 4.2s-6.8 0-8.5.5c-1 .2-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 1 1.8 2 2 1.7.5 8.5.5 8.5.5s6.8 0 8.5-.5c1-.2 1.7-1 2-2 .5-1.7.5-5.3.5-5.3ZM9.8 15.5v-7l6 3.5-6 3.5Z"/></svg>
+        <span>YouTube</span>
+      </a>
+      <a class="social-card" href="https://wa.me/8801859648452" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.6-.6-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.1 1-2.4c.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.2.1.3 0 .5-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.5 1.9 2.4 1.3 1.2 2.4 1.5 2.7 1.7.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.8.9 2.1 1 .3.2.5.2.6.4.1.1.1.7-.1 1.4Z"/></svg>
+        <span>WhatsApp</span>
+      </a>
+      <a class="social-card" href="mailto:hellodurjoy2@gmail.com">
+        <svg viewBox="0 0 24 24"><path d="M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm2.4.3 7.6 5.8 7.6-5.8H4.4ZM4 8v10h16V8l-8 6.1L4 8Z"/></svg>
+        <span>Gmail</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="motif"></div>
+
+<footer>
+  <div class="wrap">
+    <p class="fname">Durjoy Barua</p>
+    <p>&copy; <span id="year"></span> Durjoy Barua — Singer, Musician &amp; Composer. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // nav background on scroll
+  const navEl = document.querySelector('header.nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navEl.style.background = 'linear-gradient(to bottom, rgba(14,26,19,0.98), rgba(14,26,19,0.85))';
+    } else {
+      navEl.style.background = 'linear-gradient(to bottom, rgba(14,26,19,0.92), rgba(14,26,19,0))';
+    }
+  });
+
+  // motif svg pattern injected via JS to keep HTML lean
+  const motifSVG = `data:image/svg+xml,${encodeURIComponent(`
+    <svg xmlns='http://www.w3.org/2000/svg' width='42' height='14'>
+      <rect width='42' height='14' fill='#0e1a13'/>
+      <rect width='42' height='3' fill='#c1272d'/>
+      <rect y='11' width='42' height='3' fill='#2f6b52'/>
+      <circle cx='21' cy='7' r='3' fill='#dba43c'/>
+    </svg>
+  `)}`;
+  document.querySelectorAll('.motif').forEach(m => {
+    m.style.backgroundImage = `url("${motifSVG}")`;
+  });
+</script>
+
+</body>
+</html>
